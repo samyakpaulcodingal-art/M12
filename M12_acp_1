@@ -1,0 +1,19 @@
+-- 1. Create the table
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    company VARCHAR(50),
+    status VARCHAR(20)
+);
+
+-- 2. Insert sample records (including DXC employees and potential fraud cases)
+INSERT INTO employees (id, name, company, status) VALUES
+(1, 'Alice', 'DXC Company', 'Clear'),
+(2, 'Bob', 'DXC Company', 'Under Investigation'),
+(3, 'Charlie', 'Other Corp', 'Clear'),
+(4, 'David', 'DXC Company', 'Suspicious');
+
+-- 3. Fetch records using SELECT and WHERE 
+-- This helps Tarun isolate the specific DXC employees he needs to look into.
+SELECT * FROM employees 
+WHERE company = 'DXC Company' AND status != 'Clear';
