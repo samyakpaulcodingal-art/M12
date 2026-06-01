@@ -1,0 +1,28 @@
+-- Setup: Create a sample sales table
+CREATE TABLE sales (
+    sale_id INT PRIMARY KEY,
+    product_category VARCHAR(50),
+    amount INT,
+    store_location VARCHAR(50)
+);
+
+-- Insert sample records
+INSERT INTO sales (sale_id, product_category, amount, store_location) VALUES
+(1, 'Electronics', 1200, 'North'),
+(2, 'Clothing', 300, 'North'),
+(3, 'Electronics', 800, 'South'),
+(4, 'Clothing', 450, 'South'),
+(5, 'Electronics', 1500, 'North'),
+(6, 'Books', 150, 'East');
+
+---
+
+-- The Core Assignment: Group, Filter aggregate results, and Sort
+SELECT 
+    product_category,
+    SUM(amount) AS total_sales,
+    COUNT(sale_id) AS total_orders
+FROM sales
+GROUP BY product_category           -- 1. GROUPING: Groups rows by category
+HAVING SUM(amount) > 500            -- 2. FILTERING: Only keeps groups with total sales > 500
+ORDER BY total_sales DESC;          -- 3. SORTING: Sorts categories from highest sales to lowest
